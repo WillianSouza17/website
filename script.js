@@ -36,7 +36,7 @@ let contagem = 0;
 function slideShow() {
   
   
-  contagem++;
+  contagem ++;
 
   if (contagem == 1) {
     $("#slide1").show();

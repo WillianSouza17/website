@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Game Mania</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contato.css">
+</head>
+<body>
+
+    <!-- CABEÇALHO DA PÁGINA -->
+    <header class="container-fluid mh-100 d-flex align-items-center" style="background-color:#0E3A74;">
+        <div>
+            <a href="index.html"><img id="img_navbar" src="img/logo.png" alt="Logo da loja" /></a>
+        </div>
+        <p class="nav-brand h2 text-white ms-5">
+            Game Mania
+        </p>
+        <div class="container-md d-flex align-items-center justify-content-end">
+            <nav class="navbar navbar-expand-md">
+                <ul class="navbar-nav">
+                    <li class="nav-item px-5">
+                        <a id="login" class="nav-link fs-5 text-white" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item px-5 d-none d-lg-block">
+                        <a class="nav-link disabled fs-5" href="#">Carrinho</a>
+                    </li>
+                    <li class="nav-item px-5 d-none d-lg-block">
+                        <a class="nav-link disabled fs-5" href="#">Categorias</a>
+                    </li>
+                    <li class="nav-item px-5 d-none d-lg-block">
+                        <a class="nav-link fs-5 text-white" href="contato.html">Contato</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container my-5">
+        <!-- Seção 1: Título e Apresentação -->
+        <section class="mb-4">
+            <h2>Fale Conosco</h2>
+            <p>Tem alguma dúvida, sugestão ou precisa de ajuda com seu pedido? Envie uma mensagem para a nossa equipe!</p>
+        </section>
+
+        <!-- Seção 2: Formulário de Contato -->
+        <section class="mb-5">
+            <form action="#" method="post">
+                <div>
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                </div>
+
+                <div>
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+                </div>
+
+                <div>
+                    <label for="assunto">Assunto:</label>
+                    <select id="assunto" name="assunto">
+                        <option value="duvida">Dúvida sobre produtos</option>
+                        <option value="suporte">Suporte técnico</option>
+                        <option value="reclamacao">Reclamação ou Troca</option>
+                        <option value="outro">Outro assunto</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Escreva sua mensagem aqui..."></textarea>
+                </div>
+
+                <button type="submit">Enviar Mensagem</button>
+            </form>
+        </section>
+
+        <!-- Seção 3: Informações de Atendimento (SAC) -->
+        <section class="sac-info">
+            <h3>Outras formas de contato</h3>
+            <p><strong>Telefone / SAC:</strong> <span class="numero-sac">(XX) XXXXX-XXXX</span></p>
+            <p><strong>E-mail de Atendimento:</strong> <span class="email-sac">contato@gamemania.com.br</span></p>
+            <p><strong>Horário de Atendimento:</strong> Segunda a Sexta, das 08h às 18h</p>
+        </section>
+    </main>
+
+    <!-- RODAPÉ DA PÁGINA -->
+    <footer class="container-fluid py-3">
+        <p>&copy; 2026 Game Mania. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
