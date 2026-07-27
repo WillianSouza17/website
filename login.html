@@ -1,51 +1,67 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="login.css" />
+    <title>Login - Game Mania</title>
     <link rel="stylesheet" href="bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css" />
     <script type="text/javascript" src="script.js"></script>
-    <title>Página de Login</title>
-  </head>
-
-  <body>
+</head>
+<body>
 
     <!-- Header gerenciado centralizadamente via script.js -->
     <header></header>
 
-    <main>
-      <form method="get">
-        <div
-          class="container-sm d-flex align-items-center p-0 mt-5 w-75"
-          id="formulario"
-        >
-          <div class="container-sm d-flex flex-column align-items-center">
-            <label for="user" class="form-label d-none d-lg-block">
-              Insira o nome de usuário</label
-            >
-            <label for="user" class="form-label d-lg-none"
-              >Insira o usuario</label
-            >
-            <input type="text" class="form-control" id="user" />
-          </div>
-          <div class="container-sm d-flex flex-column align-items-center">
-            <label for="senha" class="form-label"> Insira sua senha</label>
-            <input type="password" class="form-control" id="senha" />
-          </div>
-          <div class="container-sm">
-            <button type="submit" onclick="pegaDadosLogin()" class="btn btn-outline-light pt-1 mx-0">
-              Entrar
-            </button>
-          </div>
-          <div class="container-md p-0" id="links">
-            <a id="link_form" href="#">Esqueceu sua senha?</a>
-            <a id="link_form" href="#">Cadastre-se</a>
-          </div>
+    <main class="container my-5">
+
+        <!-- Título da Página -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 text-white">Acesse sua Conta</h1>
+            <p class="fs-5 text-muted">Entre para gerenciar seus pedidos e aproveitar ofertas exclusivas.</p>
+            <hr class="w-25 mx-auto border-primary">
         </div>
-      </form>
+
+        <!-- Card de Login Modernizado -->
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-5">
+                <div class="login-card p-4 p-md-5 rounded shadow">
+                    
+                    <form onsubmit="event.preventDefault(); pegaDadosLogin();">
+                        
+                        <div class="mb-4">
+                            <label for="user" class="form-label fw-bold text-white">Usuário ou E-mail</label>
+                            <input type="text" class="form-control login-input" id="user" placeholder="Digite seu usuário ou e-mail" required />
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="senha" class="form-label fw-bold text-white">Senha</label>
+                            <input type="password" class="form-control login-input" id="senha" placeholder="Digite sua senha" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 py-2 fw-bold text-uppercase btn-login mb-4">
+                            Entrar
+                        </button>
+
+                        <div class="d-flex justify-content-between align-items-center mt-3 login-links">
+                            <a href="#" class="text-white-50 text-decoration-none">Esqueceu sua senha?</a>
+                            <a href="#" class="text-primary text-decoration-none fw-bold">Cadastre-se</a>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
     </main>
-  </body>
+
+    <!-- RODAPÉ DA PÁGINA -->
+    <footer class="container-fluid py-4 text-center mt-5" style="background-color: #0E3A74;">
+        <p class="m-0 text-white">&copy; 2026 Game Mania. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
 </html>
