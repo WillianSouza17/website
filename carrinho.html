@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - Game Mania</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="carrinho.css">
+</head>
+<body>
+
+    <!-- CABEÇALHO DA PÁGINA -->
+    <header class="container-fluid mh-100 d-flex align-items-center" style="background-color:#0E3A74;">
+        <div>
+            <a href="index.html"><img id="img_navbar" src="img/logo.png" alt="Logo da Game Mania" /></a>
+        </div>
+        <p class="nav-brand h2 text-white ms-5">
+            Game Mania
+        </p>
+        <div class="container-md d-flex align-items-center justify-content-end">
+            <nav class="navbar navbar-expand-md">
+                <ul class="navbar-nav">
+                    <li class="nav-item px-5">
+                        <a id="login" class="nav-link fs-5 text-white" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item px-5 d-none d-lg-block">
+                        <a class="nav-link fs-5 text-white" href="carrinho.html">Carrinho</a>
+                    </li>
+                    <li class="nav-item px-5 d-none d-lg-block">
+                        <a class="nav-link fs-5 text-white" href="categorias.html">Categorias</a>
+                    </li>
+                    <li class="nav-item px-5 d-none d-lg-block">
+                        <a class="nav-link fs-5 text-white" href="contato.html">Contato</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container my-5">
+
+        <!-- Título da Página -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 text-white">Meu Carrinho</h1>
+            <p class="fs-5 text-muted">Confira os produtos selecionados e finalize sua compra com segurança.</p>
+            <hr class="w-25 mx-auto border-primary">
+        </div>
+
+        <div class="row g-4">
+            
+            <!-- Lista de Produtos no Carrinho -->
+            <div class="col-lg-8">
+                <div class="cart-container p-4 rounded shadow">
+                    
+                    <!-- Item 1: Console -->
+                    <div class="cart-item d-flex align-items-center justify-content-between p-3 mb-3 rounded">
+                        <div class="d-flex align-items-center">
+                            <img src="img/consoles.png" alt="Console PlayStation 5" class="cart-item-img me-3">
+                            <div>
+                                <h5 class="mb-1 text-white">Console PlayStation 5 825GB</h5>
+                                <p class="mb-0 text-primary fw-bold">R$ 3.899,00</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-primary fs-6 me-3">Qtd: 1</span>
+                            <button class="btn btn-outline-danger btn-sm">&times;</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Periférico Headset -->
+                    <div class="cart-item d-flex align-items-center justify-content-between p-3 mb-3 rounded">
+                        <div class="d-flex align-items-center">
+                            <img src="img/Perifericos.png" alt="Headset Gamer RGB" class="cart-item-img me-3">
+                            <div>
+                                <h5 class="mb-1 text-white">Headset Gamer Surround 7.1 RGB</h5>
+                                <p class="mb-0 text-primary fw-bold">R$ 349,90</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-primary fs-6 me-3">Qtd: 1</span>
+                            <button class="btn btn-outline-danger btn-sm">&times;</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Periférico Teclado -->
+                    <div class="cart-item d-flex align-items-center justify-content-between p-3 mb-3 rounded">
+                        <div class="d-flex align-items-center">
+                            <img src="img/Perifericos.png" alt="Teclado Mecânico Gamer" class="cart-item-img me-3">
+                            <div>
+                                <h5 class="mb-1 text-white">Teclado Mecânico RGB Switch Blue</h5>
+                                <p class="mb-0 text-primary fw-bold">R$ 279,90</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-primary fs-6 me-3">Qtd: 1</span>
+                            <button class="btn btn-outline-danger btn-sm">&times;</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Resumo do Pedido -->
+            <div class="col-lg-4">
+                <div class="cart-summary p-4 rounded shadow">
+                    <h4 class="text-white mb-4 border-bottom border-primary pb-2">Resumo da Compra</h4>
+                    
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Subtotal:</span>
+                        <span>R$ 4.528,80</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Frete:</span>
+                        <span class="text-success">Grátis</span>
+                    </div>
+                    <hr class="border-secondary">
+                    <div class="d-flex justify-content-between mb-4 fs-5 fw-bold">
+                        <span>Total:</span>
+                        <span class="text-primary">R$ 4.528,80</span>
+                    </div>
+
+                    <button class="btn btn-primary w-100 py-2 fw-bold text-uppercase mb-2 btn-checkout">Finalizar Compra</button>
+                    <a href="index.html" class="btn btn-outline-light w-100 py-2">Continuar Comprando</a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ DA PÁGINA -->
+    <footer class="container-fluid py-4 text-center mt-5" style="background-color: #0E3A74;">
+        <p class="m-0 text-white">&copy; 2026 Game Mania. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

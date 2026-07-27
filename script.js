@@ -31,7 +31,7 @@ function pegaDados() {
     
   }
   
-let contagem = 0;
+let contagem = 1;
 
 function slideShow() {
   
@@ -50,7 +50,7 @@ function slideShow() {
     $("#slide1").hide();
     $("#slide2").hide();
     $("#slide3").show();
-    contagem = 0;
+    contagem = 1;
   }
 
   
