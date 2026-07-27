@@ -11,34 +11,36 @@ p {
 }
 
 .login-card {
-  background-color: #1a1a1a;
-  border-left: 5px solid #0258c8;
+  background-color: #0258c8;
+  border-left: 5px solid #0e3a74;
 }
 
 .login-input {
   font-family: "Laila", sans-serif;
   height: 45px;
   background-color: #252525;
-  border: 1px solid #444;
+  border: 1px solid #111;
   color: white;
   padding: 10px 15px;
 }
 
 .login-input:focus {
-  background-color: #2b2b2b;
-  border-color: #0258c8;
+  background-color: #1a1a1a;
+  border-color: #ffffff;
   color: white;
-  box-shadow: 0 0 8px rgba(2, 88, 200, 0.5);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
 .btn-login {
-  background-color: #0258c8;
+  background-color: #0e3a74;
+  color: white;
   border: none;
   transition: 0.3s ease;
 }
 
 .btn-login:hover {
-  background-color: #0e3a74;
+  background-color: #ffffff;
+  color: #0e3a74;
 }
 
 .login-links a:hover {
