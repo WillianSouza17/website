@@ -10,25 +10,32 @@ p {
   text-align: center;
 }
 
+/* Card de login no mesmo padrão escuro dos cards de categorias */
 .login-card {
-  background-color: #0258c8;
-  border-left: 5px solid #0e3a74;
+  background-color: #1a1a1a;
+  border-left: 5px solid #0258c8;
+}
+
+/* Sobrescreve o form azul do style.css global para manter o fundo transparente */
+.login-card form {
+  background-color: transparent !important;
 }
 
 .login-input {
   font-family: "Laila", sans-serif;
-  height: 45px;
-  background-color: #252525;
-  border: 1px solid #111;
-  color: white;
+  height: 45px !important;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  color: #333333;
   padding: 10px 15px;
 }
 
 .login-input:focus {
-  background-color: #1a1a1a;
-  border-color: #ffffff;
-  color: white;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  background-color: #ffffff;
+  border-color: #0258c8;
+  color: #000000;
+  box-shadow: 0 0 8px rgba(2, 88, 200, 0.5);
 }
 
 .btn-login {
@@ -39,8 +46,8 @@ p {
 }
 
 .btn-login:hover {
-  background-color: #ffffff;
-  color: #0e3a74;
+  background-color: #0258c8;
+  color: white;
 }
 
 .login-links a:hover {

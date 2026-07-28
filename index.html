@@ -5,252 +5,147 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game Mania</title>
+  <title>GameCore</title>
   <link rel="stylesheet" href="bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css" />
   <script type="text/javascript" src="script.js"></script>
-  <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
   </head>
 
-  <body onload="intervalo()">
-    <!-- Header gerenciado centralizadamente via script.js -->
+  <body>
     <header></header>
 
     <main> 
-      <!-- Slideshow -->
-      <div class="container-fluid mx-0 p-0" id="banner">
-
-        <img id="slide1" class="img-fluid" src="img/destaque.png" alt="slide 1">
-        <img id="slide2" class="img-fluid" src="img/slide2.png" alt=" slide 2">
-        <img id="slide3" class="img-fluid" src="img/slide3.png" alt=" slide 3">
-        
-
+      <div class="container-fluid mx-0 p-0 mb-4" id="banner">
+        <img class="img-fluid" id="banner-img" src="img/banner 1.jpg" alt="Banner principal" />
       </div>
 
-      <!-- Titulo das Categorias -->
-      <div class="container d-flex flex-column justify-content-center align-items-center pt-5 h-auto ">
+      <div class="container py-5 position-relative text-center" id="cat-slide">
+        <img class="cat-slide-img img-fluid" src="img/consoles.png" alt="Consoles" />
+        <img class="cat-slide-img img-fluid" src="img/Notebooks.png" alt="Notebooks" />
+        <img class="cat-slide-img img-fluid" src="img/Perifericos.png" alt="Perifericos" />
+        <img class="cat-slide-img img-fluid" src="img/Hardware.png" alt="Hardware" />
+
+        <button class="slide-arrow slide-arrow-prev" id="slide-prev">&#10094;</button>
+        <button class="slide-arrow slide-arrow-next" id="slide-next">&#10095;</button>
+
+        <div class="slide-dots" id="slide-dots">
+          <span class="slide-dot active" data-index="0"></span>
+          <span class="slide-dot" data-index="1"></span>
+          <span class="slide-dot" data-index="2"></span>
+          <span class="slide-dot" data-index="3"></span>
+        </div>
+      </div>
+
+      <div class="container text-center pt-5">
         <p class="h1">Categorias</p>
-        <div class="container w-50 p-1">
-          <hr />
-        </div>
+        <hr class="w-25 mx-auto">
       </div>
 
-        <!-- sessao das categorias -->
-      <section class="container-fluid d-flex p-3 ">
-            <div  class="container-md d-flex flex-column align-items-center justify-content-center p-3">  
-              <img class="img-fluid h-100 d-none d-lg-block" src="img/consoles.png" alt="Consoles" />
-  
-              <div id="topico">
-                <p id="nomeproduto" class="fs-5 p-3 d-none d-lg-block ">Consoles</p>
-              </div>
-              
+      <section class="container py-5">
+        <div class="row row-cols-2 row-cols-lg-4 g-4">
+          <div class="col d-flex flex-column align-items-center">
+            <img class="img-fluid categoria-img" src="img/consoles.png" alt="Consoles" />
+            <div class="topico">
+              <p class="nomeproduto fs-5 p-3">Consoles</p>
             </div>
-  
-            <div class="container-md d-flex flex-column align-items-center justify-content-center p-3">
-              <img class="img-fluid" src="img/Notebooks.png" alt="Notebooks" />
-              <div id="topico">
-                <p id="nomeproduto" class="fs-5 p-3">Notebooks</p>
-              </div>
-              
+          </div>
+          <div class="col d-flex flex-column align-items-center">
+            <img class="img-fluid categoria-img" src="img/Notebooks.png" alt="Notebooks" />
+            <div class="topico">
+              <p class="nomeproduto fs-5 p-3">Notebooks</p>
             </div>
-  
-  
-            <div class="container-md d-flex flex-column align-items-center justify-content-center p-3  ">
-  
-            
-              <img class="img-fluid " src="img/Perifericos.png" alt="Perifericos" />
-              <div id="topico">
-                <p id="nomeproduto" class="fs-5 p-3  ">Perifericos</p>
-              </div>
-            
+          </div>
+          <div class="col d-flex flex-column align-items-center">
+            <img class="img-fluid categoria-img" src="img/Perifericos.png" alt="Perifericos" />
+            <div class="topico">
+              <p class="nomeproduto fs-5 p-3">Perifericos</p>
             </div>
-              
-              
-          
-          
-            <div class="container-md d-flex flex-column align-items-center justify-content-center p-3" > 
-            
-              <img class="img-fluid d-none d-lg-block" src="img/Hardware.png" alt="Hardware" />
-              <div id="topico">
-              <p  id="nomeproduto" class=" fs-5 p-3 d-none d-lg-block ">Hardware</p>
+          </div>
+          <div class="col d-flex flex-column align-items-center">
+            <img class="img-fluid categoria-img" src="img/Hardware.png" alt="Hardware" />
+            <div class="topico">
+              <p class="nomeproduto fs-5 p-3">Hardware</p>
             </div>
-
-
+          </div>
+        </div>
       </section>
-    
-      <!-- Fim da sessao categorias -->
-    
 
-      
-
-
-
-        <!-- Topico central da pagina (inicio) -->
       <section>
-        <div id="central"  class="container-fluid d-flex align-items-center justify-content-center  h-100 p-5 " >
-          <div class="d-none d-lg-block">
-            <div class="container-md h-auto p-3">
-              <img class="img-fluid h-100 w-100 " src="img/img_central.png" alt="Imagem central da página">
+        <div id="central" class="container d-flex align-items-center justify-content-center p-5">
+          <div class="row align-items-center w-100">
+            <div class="col-lg-6 d-none d-lg-flex justify-content-center">
+              <img class="img-fluid" src="img/logo1-.png" alt="GameCore" />
+            </div>
+            <div class="col-lg-6 central-inner">
+              <p class="h1 text-center text-lg-start">Quem somos</p>
+              <p class="fs-5">Somos uma empresa de vendas completamente dedicadas e inserida no mundo dos games e da tecnologia, venha nos conhecer melhor!</p>
+              <a href="#">Saiba mais →</a>
             </div>
           </div>
-          
-          <div id="central" class="container-md d-flex flex-column align-items-center ">
-            <div class="container-sm  ">
-              <p class="h1 d-flex justify-content-center">Quem somos</p>
-            </div>
-
-            <div class="container-sm  fs-5 p-5 ">
-              <p>Somos uma empresa de vendas completamente dedicadas e inserida no mundo dos games e da tecnologia, venha nos conhecer melhor!</p>
-            <a class="" href="#">Saiba mais -></a>   
-            </div>
-          </div>
-
-
         </div>
       </section>
 
-        <!-- Fim do topico central -->
+      <div class="container text-center pt-5">
+        <p class="h1">Mais Comprados</p>
+        <hr class="w-25 mx-auto">
+      </div>
 
-
-          
-        <!-- Titulo da sessao mais comprados -->
-        <div class="container d-flex flex-column justify-content-center align-items-center pt-5 h-auto ">
-          <p class="h1">Mais Comprados</p>
-          <div class="container w-50 p-1">
-            <hr />
+      <section class="container py-5">
+        <div class="row row-cols-2 row-cols-lg-4 g-4">
+          <div class="col d-flex flex-column align-items-center">
+            <img class="img-fluid categoria-img" src="img/Produto.png" alt="NomeProduto" />
+            <div class="topico">
+              <p class="nomeproduto fs-5 p-3">NomeProduto</p>
+            </div>
+          </div>
+          <div class="col d-flex flex-column align-items-center">
+            <img class="img-fluid categoria-img" src="img/Produto.png" alt="NomeProduto" />
+            <div class="topico">
+              <p class="nomeproduto fs-5 p-3">NomeProduto</p>
+            </div>
+          </div>
+          <div class="col d-flex flex-column align-items-center">
+            <img class="img-fluid categoria-img" src="img/Produto.png" alt="NomeProduto" />
+            <div class="topico">
+              <p class="nomeproduto fs-5 p-3">NomeProduto</p>
+            </div>
+          </div>
+          <div class="col d-flex flex-column align-items-center">
+            <img class="img-fluid categoria-img" src="img/Produto.png" alt="NomeProduto" />
+            <div class="topico">
+              <p class="nomeproduto fs-5 p-3">NomeProduto</p>
+            </div>
           </div>
         </div>
-        <!-- Fim do titulo -->
+      </section>
 
-
-        <!-- Sessao mais comprados(inicio) -->
-
-
-        <section class="container-fluid d-flex p-3 ml-0  ">
-
-          <div class="container-md d-flex flex-column align-items-center justify-content-center p-3 mw-5-%">  
-            <img class="img-fluid d-none d-lg-block" src="img/Produto.png" alt="NomeProduto" />
-        
-            <div id="topico">
-              <p id="nomeproduto" class="fs-5 p-3 d-none d-lg-block">NomeProduto</p>
+      <form method="get">
+        <div class="container py-5">
+          <div class="row align-items-center g-3">
+            <div class="col-lg-5">
+              <p class="titulo-form fs-5 m-0 text-center text-lg-start">Informe seu email para receber ofertas exclusivas</p>
             </div>
-            
-          </div>
-        
-          <div class="container-md d-flex flex-column align-items-center justify-content-center p-3">
-            <img class="img-fluid " src="img/Produto.png" alt="NomeProduto" />
-            <div id="topico">
-              <p id="nomeproduto" class="fs-5 p-3">NomeProduto</p>
-            </div>
-          
-          </div>
-        
-        
-          <div class="container-md d-flex flex-column align-items-center justify-content-center p-3">
-              <img class="img-fluid" src="img/Produto.png" alt="NomeProduto" />
-              <div id="topico">
-                <p id="nomeproduto" class="fs-5 p-3">NomeProduto</p>
-              </div>
-              
-          </div>
-          
-        
-          <div class="container-md d-flex flex-column align-items-center justify-content-center p-3"> 
-            <img class="img-fluid d-none d-lg-block" src="img/Produto.png" alt="NomeProduto" />
-            <div id="topico">
-              <p  id="nomeproduto" class=" fs-5 p-3 d-none d-lg-block">NomeProduto</p>
-            </div>
-          </div>
-        
-        </section>
-
-
-
-
-
-        <!-- Formulario do site (inicio) -->
-        <form method="get">
-          <div  class="container-fluid d-flex align-items-center">
-            <div class="container-sm  p-0 mx-0">
-              <p id="titulo-form" class="fs-1 d-none d-lg-block">Informe seu email para receber ofertas exclusivas</p>
-              <p id="titulo-form" class="fs-1 d-lg-none"> Receba ofertas exclusivas </p>
-            </div>
-            <div class="container-sm d-flex align-items-center p-0 mx-0 ">
-              <div class="container-sm d-flex flex-column  align-items-center justify-content-center">
-                
-                <label for="nome" class="form-label">Insira seu nome</label>
-                <input type="text" id="nome" class="form-control" />
-
-              </div>
-              <div class="container-sm d-flex flex-column  align-items-center justify-content-center">
-                
-                <label for="email" class="form-label">Insira seu email</label>
-                <input type="email" id="email" class="form-control" />
-                
-              </div>
-              <div class="container-xs border p-0 mx-0 d-flex">
-                
-                <button  id="botao-form" onclick="pegaDados()" type="submit" class=" btn btn-outline-light pt-1 mx-0">
-                  Enviar
-                </button>
-
+            <div class="col-lg-7">
+              <div class="row g-2">
+                <div class="col-md-5">
+                  <input type="text" id="nome" class="form-control" placeholder="Insira seu nome" />
+                </div>
+                <div class="col-md-5">
+                  <input type="email" id="email" class="form-control" placeholder="Insira seu email" />
+                </div>
+                <div class="col-md-2">
+                  <button id="botao-form" type="submit" class="btn btn-outline-light w-100">Enviar</button>
+                </div>
               </div>
             </div>
-            
-
           </div>
-        </form>
-        <!-- Formulario do site (fim) -->
-        
-        
-        
+        </div>
+      </form>
 
-
-
-      </div>
     </main>
 
-    <!-- Footer do site -->
-    <footer class="container-fluid ">
-      <div class="container-fluid d-flex align-items-start justify-content-center  ">
+    <footer></footer>
 
-        <div class=" container-sm  p-0 mx-0 d-flex flex-column align-items-center justify-content-center ">
-          <p class="fs-3">Conta</p>
-          <p>Meus pedidos</p>
-          <p>Cadastrar</p>
-        </div>
-
-        <div class="container-sm  p-0 mx-0 d-flex flex-column align-items-center justify-content-center ">
-          <p class="fs-3">Departamentos</p>
-          <p class="fs-5">Periféricos</p>
-          <p class="fs-5">Computadores</p>
-          <p class="fs-5">Notebooks</p>
-          <p class="fs-5">Hardware</p>
-          <p class="fs-5">Consoles</p>
-          <p class="fs-5">Monitores</p>
-        </div>
-
-        <div class=" container-sm  p-0 mx-0 d-flex flex-column align-items-center justify-content-center ">
-          <p class="fs-3">Redes Sociais</p>
-          <p class="fs-5">Instagram</p>
-          <p class="fs-5">Facebook</p>
-        </div>
-
-        <div class=" container-sm  p-0 mx-0 d-flex flex-column align-items-center justify-content-center d-none d-lg-block ">
-          <p class="fs-3">SAC</p>
-          <p class="fs-5">(XX) XXXXX-XXXX</p>
-        </div>
-
-        <div class=" container-sm  p-0 mx-0 d-flex flex-column align-items-center justify-content-center d-none d-lg-block ">
-          <p class="fs-3">Fale Conosco</p>
-          <p class="fs-5">seuemail@mail.com.br</p>
-        </div>
-      </div>
-
-    </footer>
-    <!-- Fim do Footer  -->
-
-    
   </body>
 
 </html>
