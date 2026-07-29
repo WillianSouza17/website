@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showSlide(0);
 
-    var slideInterval = setInterval(autoSlide, 3000);
+    var slideInterval = setInterval(autoSlide, 6000);
 
     function autoSlide() {
       showSlide((catIndex + 1) % catSlides.length);
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function resetInterval() {
       clearInterval(slideInterval);
-      slideInterval = setInterval(autoSlide, 3000);
+      slideInterval = setInterval(autoSlide, 6000);
     }
 
     var nextBtn = document.getElementById("slide-next");
