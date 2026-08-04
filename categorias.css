@@ -1,7 +1,0 @@
-@import url("https://fonts.googleapis.com/css2?family=Laila:wght@700&family=Poppins:wght@100;300;400;500&display=swap");
-
-/* Categorias — estilos específicos da página */
-.categoria-card img {
-  max-height: 180px;
-  object-fit: contain;
-}
