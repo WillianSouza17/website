@@ -134,6 +134,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  var ageOverlay = document.getElementById("age-modal-overlay");
+  if (ageOverlay) {
+    var ageTimestamp = localStorage.getItem("ageVerified");
+    var ageExpired = true;
+    if (ageTimestamp) {
+      var diff = Date.now() - parseInt(ageTimestamp, 10);
+      if (diff < 2 * 60 * 60 * 1000) {
+        ageExpired = false;
+      }
+    }
+    if (ageExpired) {
+      ageOverlay.style.display = "flex";
+    }
+    document.getElementById("age-yes").addEventListener("click", function () {
+      localStorage.setItem("ageVerified", Date.now().toString());
+      ageOverlay.style.display = "none";
+    });
+    document.getElementById("age-no").addEventListener("click", function () {
+      window.location.href = "https://google.com";
+    });
+  }
+
   var userInput = document.querySelector("#user");
   if (userInput) {
     userInput.closest("form").addEventListener("submit", function (e) {

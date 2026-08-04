@@ -1,39 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Laila:wght@700&family=Poppins:wght@100;300;400;500&display=swap");
 
-body {
-  font-family: "Laila", sans-serif;
-  background-color: #2e2c2c;
-  color: white;
-}
-
-p {
-  text-align: center;
-}
-
-.categoria-card {
-  background-color: #1a1a1a !important;
-  border-left: 5px solid #0258c8 !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.categoria-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(2, 88, 200, 0.4) !important;
-}
-
+/* Categorias — estilos específicos da página */
 .categoria-card img {
   max-height: 180px;
   object-fit: contain;
-}
-
-.categoria-card .btn-outline-light {
-  border-color: #0258c8;
-  color: white;
-  transition: 0.3s ease;
-}
-
-.categoria-card .btn-outline-light:hover {
-  background-color: #0258c8;
-  color: white;
-  border-color: #0258c8;
 }
