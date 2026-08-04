@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+@theme {
+  /* GameCore palette */
+  --color-gc-bg: #0d0d14;
+  --color-gc-primary: #1b1030;
+  --color-gc-primary-dark: #0f071c;
+  --color-gc-primary-light: #4c1d95;
+  --color-gc-accent: #7c3aed;
+  --color-gc-neon: #00ff9d;
+  --color-gc-card: #14141f;
+  --color-gc-card-hover: #1c1c2b;
+  --color-gc-border: #2c2c3e;
+  --color-gc-text: #ffffff;
+  --color-gc-muted: #9a97ad;
+  --color-gc-glow: rgba(124, 58, 237, 0.5);
+  --color-gc-neon-glow: rgba(0, 255, 157, 0.35);
+
+  --font-laila: "Laila", ui-sans-serif, system-ui, sans-serif;
+  --font-poppins: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-laila);
+  background-color: var(--color-gc-bg);
+  color: var(--color-gc-text);
+}
+
+a {
+  color: var(--color-gc-text);
+}
+
+a:hover {
+  color: var(--color-gc-accent);
+  transition: color 0.3s;
+}
+
+@layer components {
+  /* Card containers with the signature GameCore accent border */
+  .gc-card {
+    @apply bg-gc-card border border-gc-border rounded-xl border-l-4 border-l-gc-accent shadow-[0_8px_24px_rgba(0,0,0,0.35)];
+  }
+
+  .gc-card-hover {
+    @apply transition-transform duration-300 ease-in-out;
+  }
+  .gc-card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 0 0 1px var(--color-gc-neon),
+      0 14px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .btn {
+    @apply inline-block px-4 py-2 rounded font-laila cursor-pointer transition-all duration-300 text-center no-underline;
+  }
+
+  .btn-primary {
+    @apply text-white;
+    background: linear-gradient(
+      135deg,
+      var(--color-gc-primary-light),
+      var(--color-gc-primary)
+    );
+    border: 1px solid var(--color-gc-primary-light);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(
+      135deg,
+      var(--color-gc-primary),
+      var(--color-gc-primary-light)
+    );
+    border-color: var(--color-gc-neon);
+    box-shadow: 0 0 14px var(--color-gc-neon-glow);
+  }
+
+  .btn-outline-light {
+    @apply text-white;
+    border: 1px solid #fff;
+  }
+  .btn-outline-light:hover {
+    background-color: var(--color-gc-primary-light);
+    border-color: var(--color-gc-neon);
+    box-shadow: 0 0 12px var(--color-gc-neon-glow);
+    color: #fff;
+  }
+
+  .btn-outline-danger {
+    @apply text-red-400 p-0;
+    border: 1px solid #f87171;
+  }
+  .btn-outline-danger:hover {
+    background-color: #dc2626;
+    color: #fff;
+  }
+
+  .btn-success {
+    @apply text-white;
+    background-color: #198754;
+    border: 1px solid #198754;
+  }
+  .btn-success:hover {
+    background-color: #157347;
+  }
+
+  .btn-danger {
+    @apply text-white;
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+  }
+  .btn-danger:hover {
+    background-color: #bb2d3b;
+  }
+
+  .form-control {
+    @apply w-full px-3 py-2 rounded bg-gc-primary-dark text-white placeholder:opacity-60;
+    border: 1px solid var(--color-gc-border);
+    font-family: var(--font-laila);
+  }
+  .form-control:focus {
+    outline: none;
+    border-color: var(--color-gc-neon);
+    box-shadow: 0 0 0 0.2rem var(--color-gc-neon-glow);
+  }
+
+  .form-select {
+    @apply w-full px-3 py-2 rounded bg-gc-primary-dark text-white;
+    border: 1px solid var(--color-gc-border);
+  }
+  .form-select:focus {
+    outline: none;
+    border-color: var(--color-gc-neon);
+    box-shadow: 0 0 0 0.2rem var(--color-gc-neon-glow);
+  }
+
+  .badge {
+    @apply inline-block px-2 py-1 rounded text-sm font-bold text-white bg-gc-primary-light;
+  }
+
+  label {
+    @apply block mb-1 text-white;
+  }
+
+  /* Header fixed navigation */
+  .header-fixed {
+    @apply fixed top-0 z-[999] w-full border-b;
+    background-color: rgba(15, 7, 28, 0.85);
+    border-color: rgba(124, 58, 237, 0.35);
+    backdrop-filter: blur(6px);
+  }
+
+  .nav-link {
+    @apply text-gc-text no-underline relative py-0 text-xs sm:text-sm tracking-wide;
+  }
+  .nav-link:hover {
+    color: var(--color-gc-accent);
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-gc-accent);
+    transition: width 0.3s;
+    transform: translateX(-50%);
+  }
+
+  /* Slider */
+  .slide-arrow {
+    @apply absolute top-1/2 -translate-y-1/2 z-10 px-3 py-2 rounded cursor-pointer text-2xl text-white;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+  }
+  .slide-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  /* Age modal overlay */
+  .age-overlay {
+    @apply fixed inset-0 flex items-center justify-center z-[10000];
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .cart-item {
+    @apply flex items-center justify-between p-3 mb-3 rounded bg-gc-card-hover border border-gc-border;
+  }
+  .cart-item:hover {
+    border-color: var(--color-gc-neon);
+    transform: translateX(5px);
+  }
+}

@@ -1,151 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
   <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GameCore</title>
-  <link rel="stylesheet" href="bootstrap/bootstrap-5.0.2-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css" />
-  <script type="text/javascript" src="script.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameCore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Laila:wght@700&family=Poppins:wght@100;300;400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
-
   <body>
-    <header></header>
-
-    <main> 
-      <div class="container-fluid mx-0 p-0 mb-4" id="banner">
-        <img class="img-fluid" id="banner-img" src="img/banner 1.jpg" alt="Banner principal" />
-      </div>
-
-      <div class="container py-5 position-relative text-center" id="cat-slide">
-        <img class="cat-slide-img img-fluid" src="img/consoles.png" alt="Consoles" />
-        <img class="cat-slide-img img-fluid" src="img/Notebooks.png" alt="Notebooks" />
-        <img class="cat-slide-img img-fluid" src="img/Perifericos.png" alt="Perifericos" />
-        <img class="cat-slide-img img-fluid" src="img/Hardware.png" alt="Hardware" />
-
-        <button class="slide-arrow slide-arrow-prev" id="slide-prev">&#10094;</button>
-        <button class="slide-arrow slide-arrow-next" id="slide-next">&#10095;</button>
-
-        <div class="slide-dots" id="slide-dots">
-          <span class="slide-dot active" data-index="0"></span>
-          <span class="slide-dot" data-index="1"></span>
-          <span class="slide-dot" data-index="2"></span>
-          <span class="slide-dot" data-index="3"></span>
-        </div>
-      </div>
-
-      <div class="container text-center pt-5">
-        <p class="h1">Categorias</p>
-        <hr class="w-25 mx-auto">
-      </div>
-
-      <section class="container py-5">
-        <div class="row row-cols-2 row-cols-lg-4 g-4">
-          <div class="col d-flex flex-column align-items-center">
-            <img class="img-fluid categoria-img" src="img/consoles.png" alt="Consoles" />
-            <div class="topico">
-              <p class="nomeproduto fs-5 p-3">Consoles</p>
-            </div>
-          </div>
-          <div class="col d-flex flex-column align-items-center">
-            <img class="img-fluid categoria-img" src="img/Notebooks.png" alt="Notebooks" />
-            <div class="topico">
-              <p class="nomeproduto fs-5 p-3">Notebooks</p>
-            </div>
-          </div>
-          <div class="col d-flex flex-column align-items-center">
-            <img class="img-fluid categoria-img" src="img/Perifericos.png" alt="Perifericos" />
-            <div class="topico">
-              <p class="nomeproduto fs-5 p-3">Perifericos</p>
-            </div>
-          </div>
-          <div class="col d-flex flex-column align-items-center">
-            <img class="img-fluid categoria-img" src="img/Hardware.png" alt="Hardware" />
-            <div class="topico">
-              <p class="nomeproduto fs-5 p-3">Hardware</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div id="central" class="container d-flex align-items-center justify-content-center p-5">
-          <div class="row align-items-center w-100">
-            <div class="col-lg-6 d-none d-lg-flex justify-content-center">
-              <img class="img-fluid" src="img/logo1-.png" alt="GameCore" />
-            </div>
-            <div class="col-lg-6 central-inner">
-              <p class="h1 text-center text-lg-start">Quem somos</p>
-              <p class="fs-5">Somos uma empresa de vendas completamente dedicadas e inserida no mundo dos games e da tecnologia, venha nos conhecer melhor!</p>
-              <a href="#">Saiba mais →</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="container text-center pt-5">
-        <p class="h1">Mais Comprados</p>
-        <hr class="w-25 mx-auto">
-      </div>
-
-      <section class="container py-5">
-        <div class="row row-cols-2 row-cols-lg-4 g-4">
-          <div class="col d-flex flex-column align-items-center">
-            <img class="img-fluid categoria-img" src="img/Produto.png" alt="NomeProduto" />
-            <div class="topico">
-              <p class="nomeproduto fs-5 p-3">NomeProduto</p>
-            </div>
-          </div>
-          <div class="col d-flex flex-column align-items-center">
-            <img class="img-fluid categoria-img" src="img/Produto.png" alt="NomeProduto" />
-            <div class="topico">
-              <p class="nomeproduto fs-5 p-3">NomeProduto</p>
-            </div>
-          </div>
-          <div class="col d-flex flex-column align-items-center">
-            <img class="img-fluid categoria-img" src="img/Produto.png" alt="NomeProduto" />
-            <div class="topico">
-              <p class="nomeproduto fs-5 p-3">NomeProduto</p>
-            </div>
-          </div>
-          <div class="col d-flex flex-column align-items-center">
-            <img class="img-fluid categoria-img" src="img/Produto.png" alt="NomeProduto" />
-            <div class="topico">
-              <p class="nomeproduto fs-5 p-3">NomeProduto</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <form method="get">
-        <div class="container py-5">
-          <div class="row align-items-center g-3">
-            <div class="col-lg-5">
-              <p class="titulo-form fs-5 m-0 text-center text-lg-start">Informe seu email para receber ofertas exclusivas</p>
-            </div>
-            <div class="col-lg-7">
-              <div class="row g-2">
-                <div class="col-md-5">
-                  <input type="text" id="nome" class="form-control" placeholder="Insira seu nome" />
-                </div>
-                <div class="col-md-5">
-                  <input type="email" id="email" class="form-control" placeholder="Insira seu email" />
-                </div>
-                <div class="col-md-2">
-                  <button id="botao-form" type="submit" class="btn btn-outline-light w-100">Enviar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-
-    </main>
-
-    <footer></footer>
-
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
-
 </html>
