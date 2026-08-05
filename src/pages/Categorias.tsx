@@ -1,70 +1,93 @@
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Grid } from "lucide-react";
+
 const categorias = [
   {
     src: "img/consoles.png",
     title: "Consoles",
     desc: "PlayStation, Xbox e Nintendo Switch com os melhores jogos do mercado.",
+    count: "42 produtos",
   },
   {
     src: "img/Notebooks.png",
     title: "Notebooks Gamer",
-    desc: "Mobilidade e potência máxima com placas de vídeo dedicadas.",
+    desc: "Mobilidade e potência máxima com placas de vídeo dedicadas de alta performance.",
+    count: "28 produtos",
   },
   {
     src: "img/Perifericos.png",
     title: "Periféricos",
     desc: "Teclados mecânicos, mouses de alta precisão e headsets imersivos.",
+    count: "95 produtos",
   },
   {
     src: "img/Hardware.png",
     title: "Hardware",
-    desc: "Placas de vídeo, processadores, memórias RAM e placas-mãe.",
+    desc: "Placas de vídeo, processadores, memórias RAM e placas-mãe de última geração.",
+    count: "150+ produtos",
   },
   {
     src: "img/cadeira.png",
     title: "Cadeiras Gamer",
     desc: "Ergonomia superior, apoio lombar e regulagem de altura para longas jogatinas.",
+    count: "18 produtos",
   },
 ];
 
-function slugify(text: string) {
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
-
 export default function Categorias() {
   return (
-    <main className="max-w-6xl mx-auto px-4 my-5">
-      <div className="text-center mb-5">
-        <h1 className="text-5xl font-bold text-white">Nossas Categorias</h1>
-        <p className="text-lg text-gc-muted">
-          Explore nosso catálogo completo de games, hardware e periféricos de
-          alta performance.
+    <main className="max-w-6xl mx-auto px-4 py-12 space-y-10">
+      <div className="text-center space-y-2">
+        <h1 className="text-4xl font-extrabold text-white flex items-center justify-center gap-3">
+          <Grid className="w-8 h-8 text-gc-accent" />
+          Nossas Categorias
+        </h1>
+        <p className="text-gray-400 max-w-xl mx-auto">
+          Explore nosso catálogo completo de games, hardware e periféricos de alta performance.
         </p>
-        <hr className="w-1/4 mx-auto border-gc-accent" />
+        <div className="w-20 h-1 bg-gc-accent mx-auto mt-2 rounded-full" />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {categorias.map((c) => (
-          <div
+          <Card
             key={c.title}
-            className="gc-card gc-card-hover h-full bg-gc-card text-white flex flex-col"
+            className="group hover:border-gc-accent/60 transition-all duration-300 flex flex-col justify-between"
           >
-            <img src={c.src} className="p-3 max-h-[180px] object-contain" alt={c.title} />
-            <div className="p-4 flex flex-col flex-1 justify-between text-center">
-              <h5 className="text-xl text-gc-accent mb-2">{c.title}</h5>
-              <p className="text-base flex-1">{c.desc}</p>
-              <a
-                href={`#${slugify(c.title)}`}
-                className="btn btn-outline-light mt-3"
+            <CardHeader className="p-4 pb-0 flex flex-row items-center justify-between">
+              <Badge variant="neon">{c.count}</Badge>
+            </CardHeader>
+
+            <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
+              <div className="w-full h-48 bg-black/20 rounded-xl p-4 flex items-center justify-center">
+                <img
+                  src={c.src}
+                  alt={c.title}
+                  className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+
+              <CardTitle className="text-2xl font-bold text-white group-hover:text-gc-accent transition-colors">
+                {c.title}
+              </CardTitle>
+
+              <p className="text-gray-400 text-sm leading-relaxed">
+                {c.desc}
+              </p>
+            </CardContent>
+
+            <CardFooter className="p-6 pt-0">
+              <Button
+                variant="outline"
+                className="w-full gap-2 group-hover:bg-gc-accent group-hover:text-gc-dark group-hover:border-gc-accent"
               >
                 Explorar {c.title}
-              </a>
-            </div>
-          </div>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </CardFooter>
+          </Card>
         ))}
       </div>
     </main>

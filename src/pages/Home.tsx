@@ -1,5 +1,9 @@
-import { FormEvent, useState } from "react";
 import Slider from "../components/Slider";
+import CategoryCard from "@/components/CategoryCard";
+import ProductCard from "@/components/ProductCard";
+import NewsletterForm from "@/components/NewsletterForm";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 const categorias = [
   { src: "img/consoles.png", nome: "Consoles" },
@@ -8,130 +12,89 @@ const categorias = [
   { src: "img/Hardware.png", nome: "Hardware" },
 ];
 
+const produtosMaisComprados = [
+  { id: 1, nome: "Headset Gamer Pro", preco: 349.9, src: "img/Produto.png", categoria: "Periféricos" },
+  { id: 2, nome: "Teclado Mecânico RGB", preco: 299.9, src: "img/Produto.png", categoria: "Periféricos" },
+  { id: 3, nome: "Mouse Gamer 16000 DPI", preco: 189.9, src: "img/Produto.png", categoria: "Periféricos" },
+  { id: 4, nome: "Cadeira Gamer Ergocore", preco: 1299.9, src: "img/Produto.png", categoria: "Cadeiras" },
+];
+
 export default function Home() {
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (nome.length < 3) {
-      alert("Por favor, digite seu nome completo.");
-      return;
-    }
-    if (!email.includes("@") || !email.includes(".")) {
-      alert("Por favor, informe um e-mail válido!");
-      return;
-    }
-    alert("E-mail cadastrado com sucesso!");
-  };
-
   return (
-    <>
-      <div className="mb-4">
+    <div className="space-y-12 pb-8">
+      {/* Banner Principal */}
+      <div className="overflow-hidden rounded-b-3xl border-b border-white/10 shadow-2xl">
         <img
-          className="w-full block"
+          className="w-full h-auto object-cover max-h-[450px]"
           src="img/banner1.png"
           alt="Banner principal"
         />
       </div>
 
-      <Slider />
-
-      <div className="text-center pt-5">
-        <p className="text-4xl font-bold">Categorias</p>
-        <hr className="w-1/4 mx-auto" />
+      {/* Slider de Destaques */}
+      <div className="max-w-7xl mx-auto px-4">
+        <Slider />
       </div>
 
-      <section className="max-w-7xl mx-auto px-4 py-5">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Seção Categorias */}
+      <section className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-extrabold text-white tracking-tight">
+            Categorias em Destaque
+          </h2>
+          <div className="w-24 h-1 bg-gc-accent mx-auto mt-2 rounded-full" />
+        </div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {categorias.map((c) => (
-            <div key={c.nome} className="flex flex-col items-center">
-              <img
-                className="w-full h-[260px] object-contain"
-                src={c.src}
-                alt={c.nome}
-              />
-              <div className="pt-7 pb-4">
-                <p className="border border-gc-accent rounded-xl cursor-pointer text-lg p-3 hover:bg-gc-neon/10 transition-colors">
-                  {c.nome}
-                </p>
-              </div>
-            </div>
+            <CategoryCard key={c.nome} nome={c.nome} src={c.src} />
           ))}
         </div>
       </section>
 
-      <section>
-        <div className="bg-gc-primary px-5 py-10 flex items-center justify-center">
-          <div className="max-w-7xl mx-auto flex items-center w-full">
-            <div className="hidden lg:flex flex-1 justify-center">
-              <img className="w-64" src="img/logo1-.png" alt="GameCore" />
-            </div>
-            <div className="flex-1 text-center lg:text-left">
-              <p className="text-4xl font-bold">Quem somos</p>
-              <p className="text-lg text-justify">
-                Somos uma empresa de vendas completamente dedicadas e inserida
-                no mundo dos games e da tecnologia, venha nos conhecer melhor!
-              </p>
-              <a href="#" className="text-gc-accent hover:text-white">
-                Saiba mais &rarr;
-              </a>
-            </div>
+      {/* Quem Somos */}
+      <section className="bg-gc-primary/80 border-y border-white/10 py-12 px-4 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8">
+          <div className="hidden lg:flex flex-1 justify-center">
+            <img className="w-64 drop-shadow-xl" src="img/logo1-.png" alt="GameCore" />
           </div>
-        </div>
-      </section>
-
-      <div className="text-center pt-5">
-        <p className="text-4xl font-bold">Mais Comprados</p>
-        <hr className="w-1/4 mx-auto" />
-      </div>
-
-      <section className="max-w-7xl mx-auto px-4 py-5">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="flex flex-col items-center">
-              <img className="w-full h-[260px] object-contain" src="img/Produto.png" alt="NomeProduto" />
-              <div className="pt-7 pb-4">
-                <p className="border border-gc-accent rounded-xl cursor-pointer text-lg p-3 hover:bg-gc-neon/10 transition-colors">
-                  NomeProduto
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <form
-        onSubmit={handleSubmit}
-        className="bg-gc-primary-dark py-5"
-      >
-        <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center gap-3">
-          <div className="flex-1 min-w-[280px]">
-            <p className="text-lg text-center lg:text-left">
-              Informe seu email para receber ofertas exclusivas
+          <div className="flex-1 text-center lg:text-left space-y-4">
+            <h2 className="text-3xl font-extrabold text-white">Quem Somos</h2>
+            <p className="text-gray-300 text-base leading-relaxed">
+              Somos uma empresa de vendas completamente dedicada e inserida no universo dos games e da tecnologia.
+              Buscamos trazer os melhores equipamentos, alta performance e os últimos lançamentos diretamente para o seu setup!
             </p>
-          </div>
-          <div className="flex-[2] min-w-[300px] grid grid-cols-1 md:grid-cols-5 gap-2">
-            <input
-              type="text"
-              className="form-control md:col-span-2"
-              placeholder="Insira seu nome"
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-            />
-            <input
-              type="email"
-              className="form-control md:col-span-2"
-              placeholder="Insira seu email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <button type="submit" className="btn btn-outline-light w-full">
-              Enviar
-            </button>
+            <Button variant="outline" className="gap-2">
+              Saiba mais <ArrowRight className="w-4 h-4" />
+            </Button>
           </div>
         </div>
-      </form>
-    </>
+      </section>
+
+      {/* Mais Comprados */}
+      <section className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-extrabold text-white tracking-tight">
+            Mais Comprados
+          </h2>
+          <div className="w-24 h-1 bg-gc-accent mx-auto mt-2 rounded-full" />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {produtosMaisComprados.map((prod) => (
+            <ProductCard
+              key={prod.id}
+              nome={prod.nome}
+              preco={prod.preco}
+              src={prod.src}
+              categoria={prod.categoria}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <NewsletterForm />
+    </div>
   );
 }

@@ -1,36 +1,56 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { User, ShoppingCart, Grid, Mail, Home } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Header() {
+  const location = useLocation();
+
+  const navItems = [
+    { to: "/", label: "Home", icon: Home },
+    { to: "/login", label: "Login", icon: User },
+    { to: "/carrinho", label: "Carrinho", icon: ShoppingCart },
+    { to: "/categorias", label: "Categorias", icon: Grid },
+    { to: "/contato", label: "Contato", icon: Mail },
+  ];
+
   return (
-    <header className="header-fixed">
-      <div className="max-w-7xl mx-auto px-4 py-0 flex items-center justify-between">
-        <div className="flex items-center">
-          <Link to="/">
-            <img src="img/logo1-.png" alt="Logo da loja" className="w-[45px] h-auto" />
-          </Link>
-          <div className="ml-1 leading-none">
-            <span className="block text-[13px] font-bold tracking-[2px]">Game</span>
-            <span className="block text-[11px] font-bold tracking-[3px] text-gc-accent">
-              Core
+    <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-gc-primary/95 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2 group">
+          <img
+            src="img/logo1-.png"
+            alt="GameCore"
+            className="w-10 h-auto group-hover:scale-105 transition-transform"
+          />
+          <div className="leading-none">
+            <span className="block text-sm font-bold tracking-widest text-white">
+              GAME
+            </span>
+            <span className="block text-xs font-bold tracking-widest text-gc-accent">
+              CORE
             </span>
           </div>
-        </div>
+        </Link>
 
-        <nav className="flex">
-          <ul className="flex list-none m-0 p-0">
-            {[
-              { to: "/login", label: "Login" },
-              { to: "/carrinho", label: "Carrinho" },
-              { to: "/categorias", label: "Categorias" },
-              { to: "/contato", label: "Contato" },
-            ].map((item) => (
-              <li key={item.to} className="px-1 lg:px-2">
-                <Link to={item.to} className="nav-link">
-                  {item.label}
+        <nav className="flex items-center gap-1 sm:gap-2">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = location.pathname === item.to;
+            return (
+              <Button
+                key={item.to}
+                asChild
+                variant={isActive ? "neon" : "ghost"}
+                size="sm"
+                className="gap-2"
+              >
+                <Link to={item.to}>
+                  <Icon className="w-4 h-4" />
+                  <span className="hidden md:inline">{item.label}</span>
                 </Link>
-              </li>
-            ))}
-          </ul>
+              </Button>
+            );
+          })}
         </nav>
       </div>
     </header>
