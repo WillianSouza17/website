@@ -25,7 +25,7 @@ export default function Home() {
       {/* Banner Principal */}
       <div className="overflow-hidden rounded-b-3xl border-b border-white/10 shadow-2xl">
         <img
-          className="w-full h-auto object-cover max-h-[450px]"
+          className="w-full h-auto"
           src="img/banner1.png"
           alt="Banner principal"
         />

@@ -14,7 +14,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-gc-primary/95 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-gc-primary/95 shadow-lg backdrop-blur-md transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <img

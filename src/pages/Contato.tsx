@@ -3,6 +3,14 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Mail, Phone, Clock, Send, MessageSquare } from "lucide-react";
 
 export default function Contato() {
@@ -91,25 +99,23 @@ export default function Contato() {
 
             <div className="space-y-2">
               <Label htmlFor="assunto">Assunto</Label>
-              <select
-                id="assunto"
-                className="flex h-11 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm text-white focus-visible:outline-none focus-visible:border-gc-accent focus-visible:ring-1 focus-visible:ring-gc-accent"
-                value={assunto}
-                onChange={(e) => setAssunto(e.target.value)}
-              >
-                <option value="duvida" className="bg-gc-primary text-white">Dúvida sobre produtos</option>
-                <option value="suporte" className="bg-gc-primary text-white">Suporte técnico</option>
-                <option value="reclamacao" className="bg-gc-primary text-white">Reclamação ou Troca</option>
-                <option value="outro" className="bg-gc-primary text-white">Outro assunto</option>
-              </select>
+              <Select value={assunto} onValueChange={(v) => setAssunto(v)}>
+                <SelectTrigger id="assunto" aria-label="Assunto">
+                  <SelectValue placeholder="Selecione um assunto" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="duvida">Dúvida sobre produtos</SelectItem>
+                  <SelectItem value="suporte">Suporte técnico</SelectItem>
+                  <SelectItem value="reclamacao">Reclamação ou Troca</SelectItem>
+                  <SelectItem value="outro">Outro assunto</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="mensagem">Mensagem</Label>
-              <textarea
+              <Textarea
                 id="mensagem"
-                rows={5}
-                className="flex w-full rounded-xl border border-white/15 bg-white/5 p-4 text-sm text-white placeholder:text-gray-400 focus-visible:outline-none focus-visible:border-gc-accent focus-visible:ring-1 focus-visible:ring-gc-accent"
                 placeholder="Escreva sua mensagem aqui..."
                 required
                 value={mensagemText}
