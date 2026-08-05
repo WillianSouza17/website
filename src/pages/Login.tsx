@@ -1,71 +1,90 @@
 import { FormEvent, useState } from "react";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { LogIn, Lock, User as UserIcon } from "lucide-react";
 
 export default function Login() {
   const [user, setUser] = useState("");
   const [senha, setSenha] = useState("");
+  const [mensagem, setMensagem] = useState<string | null>(null);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (user.length < 5 || senha.length < 5) {
-      alert("Usuário e senha devem ter pelo menos 5 caracteres.");
+      setMensagem("Usuário e senha devem ter pelo menos 5 caracteres.");
       return;
     }
-    alert("Login realizado com sucesso!");
+    setMensagem("Login realizado com sucesso!");
   };
 
   return (
-    <main className="max-w-6xl mx-auto px-4 my-5">
-      <div className="text-center mb-5">
-        <h1 className="text-5xl font-bold text-white">Acesse sua Conta</h1>
-        <p className="text-lg text-gc-muted">
-          Entre para gerenciar seus pedidos e aproveitar ofertas exclusivas.
-        </p>
-        <hr className="w-1/4 mx-auto border-gc-accent" />
-      </div>
+    <main className="max-w-xl mx-auto px-4 py-12">
+      <Card className="border border-white/10 shadow-2xl">
+        <CardHeader className="text-center space-y-2">
+          <div className="mx-auto w-12 h-12 rounded-full bg-gc-accent/10 border border-gc-accent/30 flex items-center justify-center text-gc-accent mb-2">
+            <LogIn className="w-6 h-6" />
+          </div>
+          <CardTitle className="text-3xl font-extrabold text-white">
+            Acesse sua Conta
+          </CardTitle>
+          <CardDescription>
+            Entre para gerenciar seus pedidos e aproveitar ofertas exclusivas.
+          </CardDescription>
+        </CardHeader>
 
-      <div className="flex justify-center">
-        <div className="w-full max-w-md gc-card p-4 md:p-5">
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label className="font-bold">Usuário ou E-mail</label>
-              <input
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="space-y-2">
+              <Label htmlFor="user" className="flex items-center gap-2">
+                <UserIcon className="w-4 h-4 text-gc-accent" />
+                Usuário ou E-mail
+              </Label>
+              <Input
+                id="user"
                 type="text"
-                className="form-control h-[45px]"
                 placeholder="Digite seu usuário ou e-mail"
                 value={user}
                 onChange={(e) => setUser(e.target.value)}
               />
             </div>
 
-            <div className="mb-4">
-              <label className="font-bold">Senha</label>
-              <input
+            <div className="space-y-2">
+              <Label htmlFor="senha" className="flex items-center gap-2">
+                <Lock className="w-4 h-4 text-gc-accent" />
+                Senha
+              </Label>
+              <Input
+                id="senha"
                 type="password"
-                className="form-control h-[45px]"
                 placeholder="Digite sua senha"
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
               />
             </div>
 
-            <button
-              type="submit"
-              className="btn btn-primary w-full py-2 font-bold uppercase mb-4"
-            >
-              Entrar
-            </button>
+            {mensagem && (
+              <p className="text-sm font-medium text-center text-gc-accent">
+                {mensagem}
+              </p>
+            )}
 
-            <div className="flex justify-between items-center mt-3 text-sm">
-              <a href="#" className="text-gc-muted no-underline">
-                Esqueceu sua senha?
-              </a>
-              <a href="#" className="text-gc-accent font-bold no-underline">
-                Cadastre-se
-              </a>
-            </div>
+            <Button type="submit" variant="neon" className="w-full text-base font-bold">
+              Entrar
+            </Button>
           </form>
-        </div>
-      </div>
+        </CardContent>
+
+        <CardFooter className="flex justify-between items-center text-sm pt-2">
+          <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            Esqueceu sua senha?
+          </a>
+          <a href="#" className="text-gc-accent font-semibold hover:underline">
+            Cadastre-se
+          </a>
+        </CardFooter>
+      </Card>
     </main>
   );
 }

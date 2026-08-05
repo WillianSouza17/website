@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react";
 
 interface CartItem {
   id: number;
@@ -34,99 +38,129 @@ export default function Carrinho() {
   const subtotal = items.reduce((sum, i) => sum + i.preco * i.qtd, 0);
 
   return (
-    <main className="max-w-6xl mx-auto px-4 my-5">
-      <div className="text-center mb-5">
-        <h1 className="text-5xl font-bold text-white">Meu Carrinho</h1>
-        <p className="text-lg text-gc-muted">
+    <main className="max-w-6xl mx-auto px-4 py-12 space-y-8">
+      <div className="text-center space-y-2">
+        <h1 className="text-4xl font-extrabold text-white flex items-center justify-center gap-3">
+          <ShoppingBag className="w-8 h-8 text-gc-accent" />
+          Meu Carrinho
+        </h1>
+        <p className="text-gray-400">
           Confira os produtos selecionados e finalize sua compra com segurança.
         </p>
-        <hr className="w-1/4 mx-auto border-gc-accent" />
+        <div className="w-20 h-1 bg-gc-accent mx-auto mt-2 rounded-full" />
       </div>
 
       {items.length === 0 ? (
-        <div className="text-center py-16 gc-card max-w-xl mx-auto p-8">
-          <p className="text-2xl mb-4">Seu carrinho está vazio.</p>
-          <Link to="/" className="btn btn-primary">
-            Continuar Comprando
-          </Link>
-        </div>
+        <Card className="text-center py-16 max-w-md mx-auto p-8 space-y-6">
+          <p className="text-2xl text-gray-300">Seu carrinho está vazio.</p>
+          <Button asChild variant="neon">
+            <Link to="/">Continuar Comprando</Link>
+          </Button>
+        </Card>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="lg:col-span-2">
-            <div className="gc-card p-4 rounded shadow">
-              {items.map((item) => (
-                <div key={item.id} className="cart-item">
-                  <div className="flex items-center">
-                    <img src={item.img} alt={item.nome} className="w-[70px] h-[70px] object-contain me-3" />
-                    <div>
-                      <h5 className="mb-1 text-white">{item.nome}</h5>
-                      <p className="mb-0 text-gc-accent font-bold">{formatPrice(item.preco)}</p>
-                    </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Lista de Produtos */}
+          <div className="lg:col-span-2 space-y-4">
+            {items.map((item) => (
+              <Card
+                key={item.id}
+                className="p-4 flex flex-col sm:flex-row items-center justify-between gap-4"
+              >
+                <div className="flex items-center gap-4 w-full sm:w-auto">
+                  <div className="w-20 h-20 bg-black/20 rounded-xl p-2 flex items-center justify-center shrink-0">
+                    <img
+                      src={item.img}
+                      alt={item.nome}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="badge flex items-center gap-2">
-                      <button
-                        className="bg-transparent border-none text-white cursor-pointer px-1"
-                        onClick={() => changeQtd(item.id, -1)}
-                        aria-label="Diminuir quantidade"
-                      >
-                        &minus;
-                      </button>
-                      {item.qtd}
-                      <button
-                        className="bg-transparent border-none text-white cursor-pointer px-1"
-                        onClick={() => changeQtd(item.id, 1)}
-                        aria-label="Aumentar quantidade"
-                      >
-                        +
-                      </button>
-                    </div>
-                    <span className="text-gc-muted text-sm">
-                      {formatPrice(item.preco * item.qtd)}
-                    </span>
-                    <button
-                      className="btn btn-outline-danger"
-                      onClick={() => remove(item.id)}
-                      aria-label="Remover item"
-                    >
-                      &times;
-                    </button>
+                  <div>
+                    <h4 className="font-semibold text-white text-base">
+                      {item.nome}
+                    </h4>
+                    <p className="text-gc-accent font-bold text-lg">
+                      {formatPrice(item.preco)}
+                    </p>
                   </div>
                 </div>
-              ))}
-            </div>
+
+                <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
+                  {/* Seletor de Quantidade */}
+                  <div className="flex items-center gap-2 border border-white/15 rounded-lg px-2 py-1 bg-white/5">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-7 text-white"
+                      onClick={() => changeQtd(item.id, -1)}
+                    >
+                      <Minus className="w-3 h-3" />
+                    </Button>
+                    <span className="w-6 text-center font-bold text-white text-sm">
+                      {item.qtd}
+                    </span>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-7 text-white"
+                      onClick={() => changeQtd(item.id, 1)}
+                    >
+                      <Plus className="w-3 h-3" />
+                    </Button>
+                  </div>
+
+                  <span className="font-semibold text-white text-sm min-w-[90px] text-right">
+                    {formatPrice(item.preco * item.qtd)}
+                  </span>
+
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                    onClick={() => remove(item.id)}
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </Button>
+                </div>
+              </Card>
+            ))}
           </div>
 
+          {/* Resumo da Compra */}
           <div>
-            <div className="gc-card p-4 rounded shadow">
-              <h4 className="text-white mb-4 border-b border-gc-accent pb-2">
-                Resumo da Compra
-              </h4>
-
-              <div className="flex justify-between mb-2">
-                <span>Subtotal:</span>
-                <span>{formatPrice(subtotal)}</span>
-              </div>
-              <div className="flex justify-between mb-2">
-                <span>Frete:</span>
-                <span className="text-gc-neon">Grátis</span>
-              </div>
-              <hr className="border-gc-border" />
-              <div className="flex justify-between mb-4 text-lg font-bold">
-                <span>Total:</span>
-                <span className="text-gc-accent">{formatPrice(subtotal)}</span>
-              </div>
-
-              <button
-                className="btn btn-primary w-full py-2 font-bold uppercase mb-2"
-                onClick={() => alert("Compra finalizada com sucesso!")}
-              >
-                Finalizar Compra
-              </button>
-              <Link to="/" className="btn btn-outline-light w-full py-2">
-                Continuar Comprando
-              </Link>
-            </div>
+            <Card className="border border-white/10 shadow-2xl">
+              <CardHeader>
+                <CardTitle className="text-xl font-bold text-white border-b border-white/10 pb-3">
+                  Resumo da Compra
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex justify-between text-gray-300 text-sm">
+                  <span>Subtotal</span>
+                  <span>{formatPrice(subtotal)}</span>
+                </div>
+                <div className="flex justify-between text-gray-300 text-sm items-center">
+                  <span>Frete</span>
+                  <Badge variant="neon">Grátis</Badge>
+                </div>
+                <div className="border-t border-white/10 pt-4 flex justify-between text-lg font-bold text-white">
+                  <span>Total</span>
+                  <span className="text-gc-accent">{formatPrice(subtotal)}</span>
+                </div>
+              </CardContent>
+              <CardFooter className="flex flex-col gap-3">
+                <Button
+                  variant="neon"
+                  className="w-full py-3 text-base font-bold gap-2"
+                  onClick={() => alert("Compra finalizada com sucesso!")}
+                >
+                  Finalizar Compra
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+                <Button asChild variant="outline" className="w-full">
+                  <Link to="/">Continuar Comprando</Link>
+                </Button>
+              </CardFooter>
+            </Card>
           </div>
         </div>
       )}

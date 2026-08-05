@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const slides = [
-  { src: "img/slide1.jpg", alt: "Slide 1" },
-  { src: "img/slide2.jpg", alt: "Slide 2" },
+  { src: "img/slide1.jpg", alt: "Ofertas em Periféricos" },
+  { src: "img/slide2.jpg", alt: "Lançamentos Consoles e Games" },
 ];
 
 export default function Slider() {
@@ -18,39 +20,47 @@ export default function Slider() {
   const goTo = (i: number) => setIndex(((i % slides.length) + slides.length) % slides.length);
 
   return (
-    <div className="relative mx-auto max-w-7xl px-4 py-10">
-      <div className="relative overflow-hidden rounded-lg">
+    <div className="relative mx-auto max-w-7xl py-4">
+      <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl group">
         {slides.map((slide, i) => (
           <img
             key={slide.src}
             src={slide.src}
             alt={slide.alt}
-            className={`w-full h-[330px] object-cover ${i === index ? "block" : "hidden"}`}
+            className={`w-full h-[360px] object-cover transition-opacity duration-700 ${
+              i === index ? "opacity-100 block" : "opacity-0 hidden"
+            }`}
           />
         ))}
 
-        <button
-          className="slide-arrow left-2.5"
+        <Button
+          variant="secondary"
+          size="icon"
+          className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 border-white/20 hover:bg-gc-accent hover:text-gc-dark backdrop-blur-md opacity-80 group-hover:opacity-100 transition-all"
           onClick={() => goTo(index - 1)}
           aria-label="Anterior"
         >
-          &#10094;
-        </button>
-        <button
-          className="slide-arrow right-2.5"
+          <ChevronLeft className="w-6 h-6" />
+        </Button>
+
+        <Button
+          variant="secondary"
+          size="icon"
+          className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 border-white/20 hover:bg-gc-accent hover:text-gc-dark backdrop-blur-md opacity-80 group-hover:opacity-100 transition-all"
           onClick={() => goTo(index + 1)}
           aria-label="Próximo"
         >
-          &#10095;
-        </button>
+          <ChevronRight className="w-6 h-6" />
+        </Button>
 
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/10">
           {slides.map((_, i) => (
-            <span
+            <button
               key={i}
               onClick={() => goTo(i)}
-              className={`w-3 h-3 rounded-full cursor-pointer transition-colors duration-300 ${
-                i === index ? "bg-gc-neon" : "bg-white/50 hover:bg-white/80"
+              aria-label={`Ir para slide ${i + 1}`}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                i === index ? "w-7 bg-gc-accent" : "w-2.5 bg-white/40 hover:bg-white/70"
               }`}
             />
           ))}
